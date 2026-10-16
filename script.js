@@ -22,16 +22,20 @@
 // Settings variables should contain all of the "fixed" parts of your programs
 // For example: which key does what, which notes you can play, the tempo.
 const key1 = "p"; // the key that plays the example note
-let note1 = "A3"; // the note it plays
+const note1 = "A3"; // the note it plays
 
-const vibratoKey = "d";
 // ---------- State ----------
 // State variables are the parts of your program that change over time.
 // For example: which octave you're playing in, or whether a drone is on.
+let vibrato = 0.0;
 
 // ---------- Sound ----------
 // Make the instruments and plug them into the speakers.
-const synth = new Tone.PolySynth(Tone.Synth).toDestination(); // can play several notes at once
+const synth = new Tone.PolySynth(Tone.Synth);
+let vibratoEffect = new Tone.Vibrato(3, vibrato);
+synth.chain(vibratoEffect, Tone.Destination);
+
+// can play several notes at once
 // ---------- Update ----------
 // Update the state. This is called every 100ms.
 function update() {
@@ -49,46 +53,47 @@ function use() {
 // ---------- Controls (Event Handlers) ----------
 // Runs every time a key goes down.
 
-// Runs every time a key comes up.
-function keyUp(event) {
+function keyDown(event) {
   // Example: replace this with your own instrument.
-  if (event.key === key1) {
-    synth.triggerRelease(note1, Tone.now());
-    console.log("Key up:", event.key);
+  Tone.start();
+
+  if (event.repeat === false) {
+    console.log("Key down:", event.key);
+
+    if (event.key === key1) {
+      synth.triggerAttack(note1, Tone.now());
+    }
+    if (event.key === "d") {
+      vibratoEffect.depth.value = 0.5;
+    }
   }
 }
 
-let vibrato = false;
+// Runs every time a key comes up.
 
-function keyDown(event) {
-  if (event.key === vibratoKey && vibrato === false) {
-    vibrato = true;
-  } else if (event.key === vibratoKey && vibrato === true) {
-    vibrato = false;
+function keyup(event) {
+  console.log("key up:", event.key);
+
+  if (event.key === key1) {
+    synth.triggerRelease(note1, Tone.now());
   }
-
-  if (event.key === key1 && vibrato === false) {
-    note1 = "A3";
-    if (event.repeat === false) {
-      synth.triggerAttack(note1, Tone.now());
-    }
-  } else if (event.key === key1 && vibrato === true) {
-    note1 = "C4";
-    if (event.repeat === false) {
-      synth.triggerAttack(note1, Tone.now());
-    }
+  if (event.key === "d") {
+    vibrato = 0.0;
+    vibratoEffect.depth.value = 0;
+    console.log("vibrato stops");
   }
 }
 
 // ---------- Setup ----------
 // Setup is run once, at the start of the program. It sets everything up for us!
 function setup() {
-  //update(); // start the update loop
-  //use(); // start the use loop
+  update(); // start the update loop
+
+  use(); // start the use loop
 
   // Put your event listener code here
   window.addEventListener("keydown", keyDown);
-  window.addEventListener("keyup", keyUp);
+  window.addEventListener("keyup", keyup);
 }
 
 setup(); // Always remember to call setup()!
