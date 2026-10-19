@@ -110,6 +110,24 @@ function playmelody2() {
   }
 }
 
+function noteFor(key) {
+  if (key === "o") {
+    return "C3";
+  } else if (key === "i") {
+    return "E4";
+  } else if (key === "u") {
+    return "G5";
+  }
+  return "";
+}
+
+function playKey(event) {
+  const note = noteFor(event.key);
+  if (note !== "") {
+    synth.triggerAttackRelease(note, "8n");
+  }
+}
+
 // ---------- Setup ----------
 // Setup is run once, at the start of the program. It sets everything up for us!
 function setup() {
@@ -120,6 +138,7 @@ function setup() {
   // Put your event listener code here
   window.addEventListener("keydown", keyDown);
   window.addEventListener("keyup", keyup);
+  window.addEventListener("keydown", playKey);
 }
 
 setup(); // Always remember to call setup()!
