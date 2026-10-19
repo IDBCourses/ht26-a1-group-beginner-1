@@ -61,7 +61,7 @@ function use() {
   setTimeout(use, 100); // call use() again in 100 milliseconds
 }
 
-// ---------- Controls (Event Handlers) ----------
+// ------------ Controls (Event Handlers) ----------
 // Runs every time a key goes down.
 
 // Alessia: AQ9200
