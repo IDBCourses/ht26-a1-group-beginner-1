@@ -1,10 +1,13 @@
-# Our instrument
+#DJ vibrato
 
-**Play it here:** <!-- Paste your GitHub Pages link here, e.g. https://idbcourses.github.io/ht26-a1-group-01/ -->
+**Play it here:** (https://github.com/IDBCourses/ht26-a1-group-beginner-1.git)
 
-**Group:** <!-- Names of everyone in the group -->
+**Group:** Alessia, Mathilda, Lynea & Lenissa.
 
 <!-- One or two sentences: what kind of instrument is it, and what is it like to play? -->
+
+We have synth as instrument wich play different notes, with vibrato and distortion as an effect. (it's fun, you feel like a dj)
+
 
 ## How to play
 
@@ -12,10 +15,18 @@
 
 | Key | What it does                                                |
 | --- | ----------------------------------------------------------- |
-| `A` | Plays a C4 while you hold it down (the example: replace it) |
-|     |                                                             |
+| `p` | Plays a A3 while you hold it down |
+| `o` | Plays a C3 while you hold it down |
+| `i` | Plays a E4 while you hold it down |
+| `u` | Plays a G5 while you hold it down |
+| `m` | Plays melody1, "A4", "C5", "A5", "E5" |
+| `b` | Plays melody2, "A3", "G3", "D3", "A3" |
+| `d` | Adds Vibrato effect when held down |
+| `s` | Adds Distortion effect when held down |
 
 <!-- Anything else a player needs to know: how to get started, combinations of keys, a good thing to try first. -->
+Notes p, m & b are to be held down, to keep sosunding. However o, i & u are simple short notes that can only be triggered once at time.
+To enable Vibrato or distortion effect hold down another note, must be held down at the same time.
 
 ---
 
