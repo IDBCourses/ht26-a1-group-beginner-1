@@ -28,12 +28,21 @@ const note1 = "A3"; // the note it plays
 // State variables are the parts of your program that change over time.
 // For example: which octave you're playing in, or whether a drone is on.
 let vibrato = 0.0;
+let Distortion = 0.0;
 
 // ---------- Sound ----------
 // Make the instruments and plug them into the speakers.
 const synth = new Tone.PolySynth(Tone.Synth);
 let vibratoEffect = new Tone.Vibrato(3, vibrato);
-synth.chain(vibratoEffect, Tone.Destination);
+
+const distortion = new Tone.Distortion({
+  distortion: 0.5,
+  wet: 0.8,
+  oversample: "none",
+}).chain();
+let DistortionEffect = distortion;
+synth.chain(vibratoEffect, DistortionEffect, Tone.Destination);
+//synth.chain(DistortionEffect, Tone.Destination);
 
 // can play several notes at once
 // ---------- Update ----------
@@ -66,6 +75,9 @@ function keyDown(event) {
     if (event.key === "d") {
       vibratoEffect.depth.value = 0.5;
     }
+    if (event.key === "s") {
+      DistortionEffect.distortion = 0.5;
+    }
   }
 }
 
@@ -81,6 +93,11 @@ function keyup(event) {
     vibrato = 0.0;
     vibratoEffect.depth.value = 0;
     console.log("vibrato stops");
+  }
+  if (event.key === "s") {
+    Distortion = 0.0;
+    DistortionEffect.distortion = 0;
+    console.log("Distortion stops");
   }
 }
 
