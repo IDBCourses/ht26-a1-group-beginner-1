@@ -16,7 +16,7 @@ We have synth as instrument wich play different notes, with vibrato and distorti
 | Key | What it does                                                |
 | --- | ----------------------------------------------------------- |
 | `p` | Plays a A3 while you hold it down |
-| `o` | Plays a C3 while you hold it down |
+| `o` | Plays a C3 when you press it down once |
 | `i` | Plays a E4 while you hold it down |
 | `u` | Plays a G5 while you hold it down |
 | `m` | Plays melody1, "A4", "C5", "A5", "E5" |

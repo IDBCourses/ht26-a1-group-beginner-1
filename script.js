@@ -61,9 +61,10 @@ function use() {
   setTimeout(use, 100); // call use() again in 100 milliseconds
 }
 
-// ---------- Controls (Event Handlers) ----------
+// ------------ Controls (Event Handlers) ----------
 // Runs every time a key goes down.
 
+// Alessia: AQ9200
 function keyDown(event) {
   // Example: replace this with your own instrument.
   Tone.start();
@@ -84,17 +85,13 @@ function keyDown(event) {
   // calls melody
   if (event.key === "m") {
     playMelody1();
+  } else if (event.key === "b") {
+    playmelody2();
   }
-
-  else if(event.key === "b") {
-    playmelody2();}
 }
 
-
-
-
 // Runs every time a key comes up.
-
+// Lenissa: AS7212
 function keyup(event) {
   console.log("key up:", event.key);
 
@@ -112,7 +109,7 @@ function keyup(event) {
     console.log("Distortion stops");
   }
 }
-// Melody function
+// Lynea: AP1922
 function playMelody1() {
   let now = Tone.now();
   for (let i = 0; i < melody1.length; i++) {
@@ -123,10 +120,10 @@ function playMelody1() {
 function playmelody2() {
   let now = Tone.now();
   for (let i = 0; i < melody2.length; i++) {
-  synth.triggerAttackRelease(melody2[i], "8n", now + i * 0.4);
+    synth.triggerAttackRelease(melody2[i], "8n", now + i * 0.4);
   }
 }
-
+// Matilda: AT2724
 function noteFor(key) {
   if (key === "o") {
     return "C3";
