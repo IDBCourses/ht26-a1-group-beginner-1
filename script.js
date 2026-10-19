@@ -28,6 +28,7 @@ const note1 = "A3"; // the note it plays
 // State variables are the parts of your program that change over time.
 // For example: which octave you're playing in, or whether a drone is on.
 let melody1 = ["A4", "C5", "A5", "E5"];
+let melody2 = ["A3", "G3", "D3", "A3"];
 let vibrato = 0.0;
 
 // ---------- Sound ----------
@@ -72,7 +73,13 @@ function keyDown(event) {
   if (event.key === "m") {
     playMelody1();
   }
+
+  else if(event.key === "b") {
+    playmelody2();}
 }
+
+
+
 
 // Runs every time a key comes up.
 
@@ -95,6 +102,14 @@ function playMelody1() {
     synth.triggerAttackRelease(melody1[i], "8n", now + i * 0.4);
   }
 }
+
+function playmelody2() {
+  let now = Tone.now();
+  for (let i = 0; i < melody2.length; i++) {
+  synth.triggerAttackRelease(melody2[i], "8n", now + i * 0.4);
+  }
+}
+
 // ---------- Setup ----------
 // Setup is run once, at the start of the program. It sets everything up for us!
 function setup() {
